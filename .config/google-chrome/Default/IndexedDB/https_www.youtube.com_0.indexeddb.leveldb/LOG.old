@@ -1,6 +1,0 @@
-2025/01/04-21:12:24.024 aa1 Reusing MANIFEST /home/abeer/.config/google-chrome/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/01/04-21:12:24.024 aa1 Recovering log #3
-2025/01/04-21:12:24.041 aa1 Reusing old log /home/abeer/.config/google-chrome/Default/IndexedDB/https_www.youtube.com_0.indexeddb.leveldb/000003.log 
-2025/01/04-21:47:59.107 aa1 Level-0 table #5: started
-2025/01/04-21:47:59.140 aa1 Level-0 table #5: 1471165 bytes OK
-2025/01/04-21:47:59.141 aa1 Delete type=0 #3

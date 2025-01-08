@@ -1,2 +1,0 @@
-(function (){function n(e){e instanceof Function?e(globalThis):(e.configure?.(globalThis),e.run?.(globalThis))}n(({window:e})=>{e.addEventListener("message",t=>{if(t.source!==e)return;let{source:s,type:o,value:r}=t.data;if(s!=="contentScript")return;let{tinymce:c}=e;o==="SET_TINYMCE_CONTENT"&&c.execCommand("mceInsertContent",!1,r)})});
-})();

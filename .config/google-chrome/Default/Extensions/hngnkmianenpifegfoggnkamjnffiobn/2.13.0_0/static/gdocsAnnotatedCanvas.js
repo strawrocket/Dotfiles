@@ -1,2 +1,0 @@
-(function (){function t(n){n instanceof Function?n(globalThis):(n.configure?.(globalThis),n.run?.(globalThis))}t({configure:({document:n})=>{let o="(function() {window['_docs_annotate_canvas_by_ext'] = 'hngnkmianenpifegfoggnkamjnffiobn';})();",e=n.createElement("script");e.textContent=o,(n.head||n.documentElement).appendChild(e),e.remove()},run:()=>{}});
-})();

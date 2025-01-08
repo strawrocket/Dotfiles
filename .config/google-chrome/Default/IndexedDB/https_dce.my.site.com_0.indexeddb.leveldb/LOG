@@ -1,6 +1,0 @@
-2025/01/07-23:03:19.199 d9a Reusing MANIFEST /home/abeer/.config/google-chrome/Default/IndexedDB/https_dce.my.site.com_0.indexeddb.leveldb/MANIFEST-000001
-2025/01/07-23:03:19.199 d9a Recovering log #25
-2025/01/07-23:03:19.199 d9a Reusing old log /home/abeer/.config/google-chrome/Default/IndexedDB/https_dce.my.site.com_0.indexeddb.leveldb/000025.log 
-2025/01/07-23:03:23.825 d9b Level-0 table #31: started
-2025/01/07-23:03:23.881 d9b Level-0 table #31: 2884833 bytes OK
-2025/01/07-23:03:23.884 d9b Delete type=0 #25
