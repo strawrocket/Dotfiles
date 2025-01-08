@@ -1,0 +1,1 @@
+import{r as o,j as n}from"./constants-e5712b98.js";import{d as s}from"./index-f00bab01.js";import{Q as a}from"./index-5ad58ea9.js";const i=o.createContext(null),C=({children:t})=>{const r=s(a),e=o.useMemo(()=>({merlinConfig:r.data}),[r.data]);return n.jsx(i.Provider,{value:e,children:t})};export{C,i as a};

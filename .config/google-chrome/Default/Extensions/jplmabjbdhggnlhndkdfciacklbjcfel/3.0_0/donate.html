@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Donate</title>
+  <style type="text/css">
+    @font-face {
+      font-family: 'LeagueSpartanRegular';
+      src: url('LeagueSpartan-Regular.ttf');
+    }
+
+    @font-face {
+      font-family: 'RobotoCondensedRegular';
+      src: url('RobotoCondensed-Regular.ttf');
+    }
+
+    html, body {
+      border: none;
+      padding: 0;
+      background: #35363a;
+      color: white;
+    }
+
+    .logoContainer {
+      display: inline-grid;
+      grid-template-columns: min-content min-content;
+      grid-gap: 10px;
+    }
+
+    .logo {
+      width: 48px;
+      height: 48px;
+      /* filter: drop-shadow(2px 4px 8px black); */
+    }
+
+    .logoName {
+      align-self: center;
+      font-size: 1.5em;
+      font-weight: bolder;
+      word-break: keep-all;
+      white-space: nowrap;
+      /* filter: drop-shadow(2px 4px 6px black); */
+      font-family: 'RobotoCondensedRegular';
+    }
+
+    .content {
+      font-family: 'LeagueSpartanRegular';
+      display: grid;
+      grid-template-rows: 1fr;
+      justify-content: center;
+      max-width: 650px;
+      margin: 40px auto;
+    }
+
+    .t1 {
+      font-size: 1.4em;
+      justify-self: center;
+      line-height: 1.44em;
+    }
+
+    .t2 {
+      font-size: 1.3em;
+      justify-self: center;
+    }
+
+    .c {
+      font-size: 1.2em;
+      justify-self: left;
+      padding-top: 20px;
+      line-height: 1.24em;
+    }
+
+    .smallLogo {
+      zoom: 0.5;
+      vertical-align: sub;
+    }
+
+    .donateBtnWrapper{
+      text-align: center;
+      margin-top: 20px;
+      margin-bottom: 20px;
+    }
+
+    @media (prefers-color-scheme: light) {
+      html, body {
+        background: #fff;
+        color: #18191B;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="mainContainer">
+    <div class="logoContainer"><img class="logo" src="icon48.png" /><div class="logoName">GitHub Downloader</div></div>
+    <div class="content">
+      <div class="t1">Sorry for the intrusion</div>
+      <div class="t2">This is the only time this message will be displayed</div>
+        <div class="c">Hi, I'm the developer of <div class="logoContainer smallLogo"><img class="logo" src="icon48.png" /><div class="logoName">GitHub Downloader</div></div>. I hope this message will not deter you from using the extension. If you enjoy using it, please consider donating.
+        <div class="donateBtnWrapper">
+          <form action="https://www.paypal.com/donate" method="post" target="_top">
+            <input type="hidden" name="hosted_button_id" value="M5TKBHALXE7AC" />
+            <input type="image" src="https://www.paypalobjects.com/en_US/i/btn/btn_donate_LG.gif" border="0" name="submit" title="PayPal - The safer, easier way to pay online!" alt="Donate with PayPal button" />
+            <img alt="" border="0" src="https://www.paypal.com/en_US/i/scr/pixel.gif" width="1" height="1" />
+          </form>
+        </div>
+        <div>I've developed this extension for myself because I needed this functionality and I've published it thinking that it may be useful to others.</div>
+        <div>If you've noticed any bugs or if you'll like me to add a new feature, you can let me know by sending me a message through the Chrome Web Store's support page of this extension</div>
+      </div>
+    </div>
+    <div id="footer"></div>
+  </div>
+</body>
+</html>

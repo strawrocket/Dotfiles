@@ -1,0 +1,38 @@
+{
+   "action": {
+      "default_icon": {
+         "128": "ccugame_128.png",
+         "16": "ccugame-16.png",
+         "32": "ccugame-32.png"
+      },
+      "default_title": "Star Citizen CCU Game"
+   },
+   "background": {
+      "service_worker": "background.js",
+      "type": "module"
+   },
+   "content_scripts": [ {
+      "css": [  ],
+      "js": [ "ccugame-app-integration_content-script.js" ],
+      "matches": [ "https://ccugame.app/*" ],
+      "run_at": "document_start"
+   } ],
+   "content_security_policy": {
+      "object-src": "self",
+      "script-src": "self",
+      "worker-src": "self"
+   },
+   "description": "Get a quick overview over all your ships/upgrades in your hangar and buyback, plan optimal upgrade chains.",
+   "host_permissions": [ "https://robertsspaceindustries.com/*", "https://support.robertsspaceindustries.com/hc/en-us/articles/360003093114" ],
+   "icons": {
+      "128": "ccugame_128.png",
+      "16": "ccugame-16.png",
+      "32": "ccugame-32.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAspGeWPxecxOTbP5WfwxI0eik9r9WCKcTe1IIaycxHdCz843tlsz5coH1QwPvTpLnVInHlUCaRYmwWU9oDrrtx9f/wsgMdECPr744mwD+LsT4HVKJkGUAQfCUmhZrRHb+2HegvSYb+raAHipBJP/dBq85mru+DebWhzOUu5GgYsAyHwok/ZPSoZl7dxTVmq+82gClGN+EbXNT7u97CPpm+kN3mwwoeqXmWe5sJnrSFn3//Q1SLzlwEKD630vmkej4p2EepNxCNo9nC9GL+FYnH1DCQUq/cExGXo1q/YrIaNVi2SBdB6u/hi2rGyizNtgD5Fpt0GbaSoAcmb/qVnlNPQIDAQAB",
+   "manifest_version": 3,
+   "name": "Star Citizen CCU Game",
+   "permissions": [ "storage", "cookies", "unlimitedStorage" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "6.0.2"
+}

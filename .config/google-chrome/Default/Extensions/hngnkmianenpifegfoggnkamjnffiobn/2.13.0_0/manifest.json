@@ -1,0 +1,61 @@
+{
+   "action": {
+      "default_icon": {
+         "36": "assets/icon/off.png"
+      },
+      "default_title": "Open Writer Side Panel"
+   },
+   "background": {
+      "service_worker": "static/background.js"
+   },
+   "content_scripts": [ {
+      "all_frames": false,
+      "css": [ "static/global.css" ],
+      "exclude_matches": [ "*://docs.google.com/spreadsheets/*", "*://miro.com/*", "*://www.achieve.com/*", "*://*.sdlproducts.com/*", "*://onedrive.live.com/*", "*://*.sharepoint.com/*", "*://*.styleguide.com/*" ],
+      "js": [ "static/content.js" ],
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_end"
+   }, {
+      "all_frames": false,
+      "js": [ "static/sidePanelButton.js" ],
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_end"
+   }, {
+      "all_frames": true,
+      "exclude_matches": [ "*://docs.google.com/spreadsheets/*", "*://miro.com/*", "*://www.achieve.com/*", "*://*.sdlproducts.com/*", "*://onedrive.live.com/*", "*://*.sharepoint.com/*", "*://*.styleguide.com/*" ],
+      "js": [ "static/iframeInit.js" ],
+      "match_about_blank": true,
+      "match_origin_as_fallback": true,
+      "matches": [ "\u003Call_urls>" ],
+      "run_at": "document_end"
+   }, {
+      "all_frames": true,
+      "js": [ "static/gdocsInit.js" ],
+      "matches": [ "*://docs.google.com/document/*" ],
+      "run_at": "document_start"
+   }, {
+      "all_frames": false,
+      "js": [ "static/gdocsPreInject.js" ],
+      "matches": [ "*://docs.google.com/document/*" ],
+      "run_at": "document_start"
+   } ],
+   "description": "Generative AI in all the places you work",
+   "host_permissions": [ "http://*/", "https://*/" ],
+   "icons": {
+      "128": "icon128.png",
+      "16": "icon16.png",
+      "32": "icon32.png",
+      "48": "icon48.png"
+   },
+   "key": "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAtFCr6sER2iNlslxqgtmHDwjEkoZ1yitqLjH7/FjcsesKfLbPgQSzmPu/EJkiEA5QuY03szQkJGZH0Wo9UnQKE9XcXP8CvbQH2zxj0HihYFrh6QvzE4vorIaQaVImxrMA4wPN0yPmrgoSiJAibCThnZgcPfEWkxUOsi41FvzSpWPRDw5LNNrtoJtdGbEIxTDvM5PUK02tlOoEXU4WGoSM8ppMjIEAKuZE2Najtvr5JCgnUvcI7ubAS48AcaM4SPdbVSg1NpcE0Och9Bat2MYejDII54/oWNh5CMfZsocdGJCbS8WOGCC0X3wvDofoOoPsIa9URDystbkPnFHbvYWUDQIDAQAB",
+   "manifest_version": 3,
+   "name": "Writer",
+   "options_page": "options.html",
+   "permissions": [ "tabs", "cookies", "storage", "scripting", "sidePanel" ],
+   "update_url": "https://clients2.google.com/service/update2/crx",
+   "version": "2.13.0",
+   "web_accessible_resources": [ {
+      "matches": [ "\u003Call_urls>" ],
+      "resources": [ "assets/*", "fonts/*", "css/*", "js/pdfWorker.js", "static/inline-assets/*", "static/global.css", "static/content.js", "static/gdocsInit.js", "static/gdocsPreInjectImpl.js", "static/gdocsAnnotatedCanvas.js", "static/buzzFeedInjectScript.js", "static/tinymceInjectScript.js", "static/iframeInit.js", "static/sidePanel.js", "static/codemirror5Script.js" ]
+   } ]
+}

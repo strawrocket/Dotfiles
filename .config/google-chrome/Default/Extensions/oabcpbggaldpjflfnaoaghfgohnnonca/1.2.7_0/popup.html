@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="popup.css">
+    <title>Netflix Skipper</title>
+</head>
+
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="https://www.netflix.com" target="_blank" class="headerIcon">
+                <img src="./Netflix36Skipper.png" alt="icon">
+            </a>
+            <div class="headerText">Netflix Skipper</div>
+        </div>
+        <div class="form">
+            <div class="smallContainer">
+                <div class="label">Skip intros and recaps</div>
+                <label class="switch">
+                    <input type="checkbox" name="IntrosAndRecaps" id="IntrosAndRecaps" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="smallContainer">
+                <div class="label">Next episode</div>
+                <label class="switch">
+                    <input type="checkbox" name="NextEpisode" id="NextEpisode" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="smallContainer">
+                <div class="label">Continue watching</div>
+                <label class="switch">
+                    <input type="checkbox" name="ContinueWatching" id="ContinueWatching" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+            <div class="smallContainer">
+                <div class="label">Fast-forward Ads</div>
+                <label class="switch">
+                    <input type="checkbox" name="SkipAds" id="SkipAds" checked>
+                    <span class="slider"></span>
+                </label>
+            </div>
+        </div>
+        <hr>
+        <div class="footer">
+            <div class="text1">
+                <a href="https://dogooodapp.com/skipper/" target="_blank" rel="noopener noreferrer">dogooodapp.com</a>
+            </div>
+            <div class="text2">
+                <a href="https://dogooodapp.com/privacy_policy/" target="_blank" rel="noopener noreferrer">Privacy policy</a>
+            </div>
+        </div>
+    </div>
+    <script src="popup.js"></script>
+    <script src="options.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,2 @@
+(function (){function t(s){s instanceof Function?s(globalThis):(s.configure?.(globalThis),s.run?.(globalThis))}t({configure:({window:s})=>{s.superlist=s.superlist||{};let e=null;s.addEventListener("message",i=>{i.source===s&&i.data.source==="contentScript"&&i.data.type==="SET_DISABLE_ACTIONS"&&"isDisableActions"in s.superlist&&(s.superlist.isDisableActions=i.data.value,e!==null&&(clearTimeout(e),e=null),i.data.value&&(e=setTimeout(()=>{s.superlist.isDisableActions=!1},5e3)))})}});
+})();

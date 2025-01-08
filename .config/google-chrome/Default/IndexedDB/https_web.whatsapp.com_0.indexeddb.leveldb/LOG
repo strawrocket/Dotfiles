@@ -1,0 +1,17 @@
+2025/01/07-19:21:43.959 d9a Reusing MANIFEST /home/abeer/.config/google-chrome/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/MANIFEST-000001
+2025/01/07-19:21:43.959 d9a Recovering log #172
+2025/01/07-19:21:43.962 d9a Reusing old log /home/abeer/.config/google-chrome/Default/IndexedDB/https_web.whatsapp.com_0.indexeddb.leveldb/000172.log 
+2025/01/07-19:21:44.252 d9c Level-0 table #179: started
+2025/01/07-19:21:44.255 d9c Level-0 table #179: 241624 bytes OK
+2025/01/07-19:21:44.256 d9c Delete type=0 #172
+2025/01/07-19:21:44.256 d9a Manual compaction at level-0 from '\x000\x00\x00\x00' @ 72057594037927935 : 1 .. '\x001\x00\x00\x00' @ 0 : 0; will stop at (end)
+2025/01/07-19:21:44.927 d9b Compacting 1@1 + 3@2 files
+2025/01/07-19:21:44.947 d9b Generated table #180@1: 33024 keys, 2197432 bytes
+2025/01/07-19:21:44.963 d9b Generated table #181@1: 18874 keys, 2195085 bytes
+2025/01/07-19:21:44.977 d9b Generated table #182@1: 53991 keys, 1259115 bytes
+2025/01/07-19:21:44.977 d9b Compacted 1@1 + 3@2 files => 5651632 bytes
+2025/01/07-19:21:44.978 d9b compacted to: files[ 0 0 3 0 0 0 0 ]
+2025/01/07-19:21:44.978 d9b Delete type=2 #179
+2025/01/07-19:21:44.978 d9b Delete type=2 #175
+2025/01/07-19:21:44.978 d9b Delete type=2 #176
+2025/01/07-19:21:44.978 d9b Delete type=2 #174
