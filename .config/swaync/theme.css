@@ -1,0 +1,9 @@
+@define-color bar-bg rgba(10, 12, 10, 0);         /* Transparent dark green background */  
+@define-color main-bg rgba(10, 12, 10, 0.5);       /* Semi-transparent dark green */  
+@define-color main-fg rgba(144, 238, 144, 0.8);    /* Light green text */  
+@define-color wb-act-bg rgba(85, 107, 47, 0.4);    /* Darker olive green for active background */  
+@define-color wb-act-fg rgba(144, 238, 144, 1);     /* Bright green text for active */  
+@define-color wb-hvr-bg rgba(34, 139, 34, 0.4);     /* Forest green for hover background */  
+@define-color wb-hvr-fg rgba(144, 238, 144, 0.8);    /* Light green text for hover */  
+@define-color text rgba(255, 255, 255, 1);         /* Keep white text for contrast */  
+@define-color text2 rgba(144, 238, 144, 1);         /* Light green for secondary text */
