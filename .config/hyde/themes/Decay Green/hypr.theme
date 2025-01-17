@@ -2,7 +2,7 @@ $HOME/.config/hypr/themes/theme.conf|> $HOME/.config/hypr/themes/colors.conf
 #  P̳r̳a̳s̳a̳n̳t̳h̳ R̳a̳n̳g̳a̳n̳
 
 $GTK_THEME = Decay-Green
-$ICON_THEME = Tela-circle-green
+$ICON_THEME = Gruvbox-Blue
 $COLOR_SCHEME = prefer-dark
 
 # Optional: The varibles above will be set automatically when the theme is loaded
@@ -30,7 +30,7 @@ group {
 }
 
 decoration {
-    rounding = 8
+    rounding = 0
     shadow:enabled = false
 
     blur {

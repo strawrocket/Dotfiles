@@ -8,7 +8,7 @@ $HOME/.config/hypr/themes/theme.conf|> $HOME/.config/hypr/themes/colors.conf
 
 $GTK_THEME = Gruvbox-Retro
 $ICON_THEME = Gruvbox-Plus-Dark
-$CURSOR_THEME = Gruvbox-Retro
+$CURSOR_THEME = McMojave-cursors
 $CURSOR_SIZE = 20
 $COLOR_SCHEME = prefer-dark
 
@@ -53,4 +53,4 @@ decoration {
     }
 }
 
-layerrule = blur,waybar
+layerrule = unset, waybar
