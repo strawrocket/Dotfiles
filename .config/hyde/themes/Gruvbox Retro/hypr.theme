@@ -28,7 +28,7 @@ general {
     border_size = 2
     col.active_border = rgba(90ceaaff) rgba(ecd3a0ff) 45deg
     col.inactive_border = rgba(1e8b50d9) rgba(50b050d9) 45deg
-    layout = dwindle
+    layout = master
     resize_on_border = true
 }
 
@@ -40,7 +40,7 @@ group {
 }
 
 decoration {
-    rounding = 3
+    rounding = 0
     shadow:enabled = false
 
     blur {
