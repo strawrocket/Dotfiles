@@ -45,3 +45,5 @@ else
 end
 # <<< conda initialize <<<
 
+
+fish_add_path /home/abeer/.spicetify
