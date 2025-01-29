@@ -35,6 +35,11 @@ require("gruvbox").setup({
   },
 })
 
+require("venv-selector").setup({
+  anaconda_base_path = "/home/abeer/anaconda3",
+  anaconda_envs_path = "/home/abeer/anaconda3/bin",
+})
+
 -- Hyprlang LSP
 vim.api.nvim_create_autocmd({ "BufEnter", "BufWinEnter" }, {
   pattern = { "*.hl", "hypr*.conf" },

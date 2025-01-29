@@ -7,42 +7,41 @@ return {
         "stylua",
         "luacheck",
         "clangd",
-        "shellcheck",
       })
     end,
   },
 
   -- lsp servers
-  {
-    "neovim/nvim-lspconfig",
-    opts = {
-      ---@type lspconfig.Config
-      servers = {
-        clangd = {
-          cmd = { "clangd", "-clang-tidy", "--enable-config" },
-          root_dir = function(...)
-            return require("lspconfig.util").root_pattern(".git")(...)
-          end,
-          settings = {
-            clangd = {
-              inlayHints = {
-                enable = true,
-                unusedvariable = true,
-              },
-              diagnostics = {
-                enable = true,
-                showInlayHints = true,
-                severity = {
-                  warning = true,
-                },
-              },
-            },
-          },
-        },
-      },
-      setup = {},
-    },
-  },
+  -- {
+  --   "neovim/nvim-lspconfig",
+  --   opts = {
+  --     ---@type lspconfig.Config
+  --     servers = {
+  --       clangd = {
+  --         cmd = { "clangd", "-clang-tidy", "--enable-config" },
+  --         root_dir = function(...)
+  --           return require("lspconfig.util").root_pattern(".git")(...)
+  --         end,
+  --         settings = {
+  --           clangd = {
+  --             inlayHints = {
+  --               enable = true,
+  --               unusedvariable = true,
+  --             },
+  --             diagnostics = {
+  --               enable = true,
+  --               showInlayHints = true,
+  --               severity = {
+  --                 warning = true,
+  --               },
+  --             },
+  --           },
+  --         },
+  --       },
+  --     },
+  --     setup = {},
+  --   },
+  -- },
   {
     "neovim/nvim-lspconfig",
     opts = function()
@@ -67,7 +66,7 @@ return {
         pyright = {
           settings = {
             python = {
-              pythonPath = "/home/abeer/miniforge3/envs/sklearn-env/bin/python3.1", -- Replace with your Conda Python path
+              pythonPath = "/home/abeer/anaconda3/bin/python", -- Replace with your Conda Python path
               analysis = {
                 typeCheckingMode = "basic", -- Optional: Enables type checking
                 autoSearchPaths = true, -- Autoload dependencies
