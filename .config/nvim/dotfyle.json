@@ -17,7 +17,6 @@
     "jq",
     "js-debug-adapter",
     "lua-language-server",
-    "markdownlint",
     "marksman",
     "markuplint",
     "prettier",

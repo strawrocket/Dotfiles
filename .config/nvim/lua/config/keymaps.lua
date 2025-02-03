@@ -12,6 +12,22 @@ local opts = { noremap = true, silent = true }
 keymap.set("n", "te", ":tabedit")
 keymap.set("n", "<tab>", ":tabnext<Return>", opts)
 keymap.set("n", "<s-tab>", ":tabprev<Return>", opts)
+keymap.set("n", "<F10>", ":redo<Return>", opts)
+
+local hardmode = false
+if hardmode then
+  for _, mode in pairs({ "n", "i", "v", "x" }) do
+    for _, key in pairs({ "<Up>", "<Down>", "<Left>", "<Right>" }) do
+      keymap.set(mode, key, "")
+      keymap.set("i", key, "")
+    end
+  end
+
+  keymap.set("i", "<A-h>", "<Left>")
+  keymap.set("i", "<A-j>", "<Down>")
+  keymap.set("i", "<A-k>", "<Up>")
+  keymap.set("i", "<A-l>", "<Right>")
+end
 
 -- keymap.set("n", "<leader>ac", ":TabnineChat<Return>", opts) -- Open Tabnine Chat
 -- keymap.set("n", "<leader>af", ":TabnineFix<Return>", opts) -- Fix the function in scope

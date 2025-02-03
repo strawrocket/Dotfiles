@@ -28,6 +28,7 @@ zoxide init --cmd cd fish | source
 
 set -gx PIP_HOME /opt/anaconda/bin
 set -gx PATH $PATH $PIP_HOME
+set EZA_CONFIG_HOME /home/abeer/.config/eza/
 
 # Always mkdir a path (this doesn't inhibit functionality to make a single dir)
 abbr mkdir 'mkdir -p'
@@ -35,15 +36,17 @@ abbr mkdir 'mkdir -p'
 # >>> conda initialize >>>
 # !! Contents within this block are managed by 'conda init' !!
 if test -f /home/abeer/anaconda3/bin/conda
-    eval /home/abeer/anaconda3/bin/conda "shell.fish" "hook" $argv | source
+    eval /home/abeer/anaconda3/bin/conda "shell.fish" hook $argv | source
 else
     if test -f "/home/abeer/anaconda3/etc/fish/conf.d/conda.fish"
         . "/home/abeer/anaconda3/etc/fish/conf.d/conda.fish"
     else
-        set -x PATH "/home/abeer/anaconda3/bin" $PATH
+        set -x PATH /home/abeer/anaconda3/bin $PATH
     end
 end
 # <<< conda initialize <<<
 
 
 fish_add_path /home/abeer/.spicetify
+
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"

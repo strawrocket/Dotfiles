@@ -16,7 +16,16 @@
     "lazyvim.plugins.extras.ui.mini-indentscope",
     "lazyvim.plugins.extras.ui.treesitter-context",
     "lazyvim.plugins.extras.util.dot",
-    "lazyvim.plugins.extras.util.mini-hipatterns"
+    "lazyvim.plugins.extras.util.mini-hipatterns",
+    "plugins.extras.editor.docs.obsidian",
+    "plugins.extras.editor.git.gitgraph",
+    "plugins.extras.editor.git.neogit",
+    "plugins.extras.editor.hover",
+    "plugins.extras.editor.telescope.undotree",
+    "plugins.extras.lsp.lspconfig-extended",
+    "plugins.extras.ui.image",
+    "plugins.extras.util.tmux",
+    "plugins.extras.util.yazi"
   ],
   "news": {
     "NEWS.md": "10960"
