@@ -23,6 +23,7 @@
     "plugins.extras.editor.hover",
     "plugins.extras.editor.telescope.undotree",
     "plugins.extras.lsp.lspconfig-extended",
+    "plugins.extras.ui.colorschemes.monokai-pro",
     "plugins.extras.ui.image",
     "plugins.extras.util.tmux",
     "plugins.extras.util.yazi"

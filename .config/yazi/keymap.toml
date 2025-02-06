@@ -83,12 +83,13 @@ append_keymap = [
   { on = [
     "g",
     "e",
-  ], run = "cd ~/dev/", desc = "Go to the dev directory" },
+  ], run = "cd ~/HES/", desc = "Go to the HES directory" },
 ]
 
 [input]
 
 prepend_keymap = [{ on = ["<Esc>"], run = "close", desc = "Cancel input" }]
+
 
 [completion]
 prepend_keymap = [

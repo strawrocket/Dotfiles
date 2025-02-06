@@ -56,65 +56,64 @@ require("searchjump"):setup({
 })
 
 require("yatline"):setup({
-	section_separator = { open = "", close = "" },
-	inverse_separator = { open = "", close = "" },
-	part_separator = { open = "", close = "" },
+	--theme = my_theme,
+	section_separator = { open = "", close = "" },
+	part_separator = { open = "", close = "" },
+	inverse_separator = { open = "", close = "" },
 
 	style_a = {
-		fg = catppuccin_palette.mantle,
+		fg = "black",
 		bg_mode = {
-			normal = catppuccin_palette.blue,
-			select = catppuccin_palette.mauve,
-			un_set = catppuccin_palette.red,
+			normal = "white",
+			select = "brightyellow",
+			un_set = "brightred",
 		},
 	},
-	style_b = { bg = catppuccin_palette.surface0, fg = catppuccin_palette.text },
-	style_c = { bg = catppuccin_palette.base, fg = catppuccin_palette.text },
+	style_b = { bg = "brightblack", fg = "brightwhite" },
+	style_c = { bg = "black", fg = "brightwhite" },
 
-	permissions_t_fg = catppuccin_palette.green,
-	permissions_r_fg = catppuccin_palette.yellow,
-	permissions_w_fg = catppuccin_palette.red,
-	permissions_x_fg = catppuccin_palette.sky,
-	permissions_s_fg = catppuccin_palette.lavender,
-
-	selected = { icon = "󰻭", fg = catppuccin_palette.yellow },
-	copied = { icon = "", fg = catppuccin_palette.green },
-	cut = { icon = "", fg = catppuccin_palette.red },
-
-	total = { icon = "", fg = catppuccin_palette.yellow },
-	succ = { icon = "", fg = catppuccin_palette.green },
-	fail = { icon = "", fg = catppuccin_palette.red },
-	found = { icon = "", fg = catppuccin_palette.blue },
-	processed = { icon = "", fg = catppuccin_palette.green },
+	permissions_t_fg = "green",
+	permissions_r_fg = "yellow",
+	permissions_w_fg = "red",
+	permissions_x_fg = "cyan",
+	permissions_s_fg = "white",
 
 	tab_width = 20,
-	tab_use_inverse = true,
+	tab_use_inverse = false,
 
-	show_background = false,
+	selected = { icon = "󰻭", fg = "yellow" },
+	copied = { icon = "", fg = "green" },
+	cut = { icon = "", fg = "red" },
+
+	total = { icon = "󰮍", fg = "yellow" },
+	succ = { icon = "", fg = "green" },
+	fail = { icon = "", fg = "red" },
+	found = { icon = "󰮕", fg = "blue" },
+	processed = { icon = "󰐍", fg = "green" },
+
+	show_background = true,
 
 	display_header_line = true,
 	display_status_line = true,
+
+	component_positions = { "header", "tab", "status" },
 
 	header_line = {
 		left = {
 			section_a = {
 				{ type = "line", custom = false, name = "tabs", params = { "left" } },
 			},
-			section_b = {
-				{ type = "coloreds", custom = false, name = "githead" },
-			},
+			section_b = {},
 			section_c = {},
 		},
 		right = {
 			section_a = {
-				{ type = "string", custom = false, name = "tab_path" },
+				{ type = "string", custom = false, name = "date", params = { "%A, %d %B %Y" } },
 			},
 			section_b = {
-				{ type = "coloreds", custom = false, name = "task_workload" },
+				{ type = "string", custom = false, name = "date", params = { "%X" } },
 			},
-			section_c = {
-				{ type = "coloreds", custom = false, name = "task_states" },
-			},
+			section_c = {},
 		},
 	},
 
@@ -127,7 +126,7 @@ require("yatline"):setup({
 				{ type = "string", custom = false, name = "hovered_size" },
 			},
 			section_c = {
-				{ type = "string", custom = false, name = "hovered_name" },
+				{ type = "string", custom = false, name = "hovered_path" },
 				{ type = "coloreds", custom = false, name = "count" },
 			},
 		},
@@ -145,7 +144,6 @@ require("yatline"):setup({
 		},
 	},
 })
-
 require("yatline-githead"):setup({
 	show_branch = true,
 	branch_prefix = "",
@@ -184,6 +182,10 @@ require("yatline-githead"):setup({
 	untracked_color = catppuccin_palette.pink,
 	ahead_color = catppuccin_palette.green,
 	behind_color = catppuccin_palette.yellow,
+})
+
+require("smart-enter"):setup({
+	open_multi = true,
 })
 
 require("git"):setup()
