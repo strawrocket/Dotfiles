@@ -1,7 +1,7 @@
 {
   "extras": [
-    "lazyvim.plugins.extras.ai.copilot",
-    "lazyvim.plugins.extras.ai.copilot-chat",
+    "lazyvim.plugins.extras.ai.codeium",
+    "lazyvim.plugins.extras.coding.mini-snippets",
     "lazyvim.plugins.extras.coding.mini-surround",
     "lazyvim.plugins.extras.coding.neogen",
     "lazyvim.plugins.extras.coding.yanky",
@@ -12,6 +12,7 @@
     "lazyvim.plugins.extras.lang.clangd",
     "lazyvim.plugins.extras.lang.markdown",
     "lazyvim.plugins.extras.lang.python",
+    "lazyvim.plugins.extras.ui.edgy",
     "lazyvim.plugins.extras.ui.mini-indentscope",
     "lazyvim.plugins.extras.ui.treesitter-context",
     "lazyvim.plugins.extras.util.dot",
@@ -24,12 +25,17 @@
     "plugins.extras.editor.telescope.undotree",
     "plugins.extras.lsp.lspconfig-extended",
     "plugins.extras.ui.colorschemes.monokai-pro",
+    "plugins.extras.ui.edgy-extended",
     "plugins.extras.ui.image",
+    "plugins.extras.ui.img-clip",
+    "plugins.extras.ui.which-key-extended",
+    "plugins.extras.ui.windows",
     "plugins.extras.util.tmux",
     "plugins.extras.util.yazi"
   ],
+  "install_version": 7,
   "news": {
     "NEWS.md": "10960"
   },
-  "version": 7
+  "version": 8
 }
