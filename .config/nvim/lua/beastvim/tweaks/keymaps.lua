@@ -1,5 +1,31 @@
 local map = Utils.safe_keymap_set
 
+-- Define the function to run the current file in a tmux pane using Python
+local function run_in_tmux()
+  -- Get the full path and directory of the current file
+  local file_path = vim.fn.expand("%:p")
+  local file_dir = vim.fn.expand("%:p:h")
+  local command = "python " .. file_path
+
+  -- Check if this command is running within a tmux session
+  if os.getenv("TMUX") ~= nil then
+    -- Check if there's only one pane currently
+    local panes = io.popen("tmux list-panes -F '#{pane_active}' | wc -l"):read("*n")
+
+    -- Open in same directory: Create a new vertical split pane with `-c` to set the initial directory
+    if panes == 1 then
+      os.execute("tmux split-window -v -c " .. vim.fn.shellescape(file_dir))
+    end
+
+    -- Select the pane below
+    os.execute("tmux select-pane -D")
+    -- Send the Python command to run in the selected pane
+    os.execute("tmux send-keys '" .. command .. "' Enter")
+  else
+    print("Not inside a tmux session")
+  end
+end
+
 -------------------- General Mappings --------------------------
 map("n", "<leader>w", "<cmd>w!<CR>", { desc = "Save" })
 map("n", "<leader>q", "<cmd>q!<CR>", { desc = "Quit" })
@@ -26,6 +52,8 @@ map("i", "jK", "<ESC>", { desc = "Escape from insert mode" })
 map("v", "<", "<gv", { desc = "Indent left" })
 map("v", ">", ">gv", { desc = "Indent right" })
 map("v", "p", '"_dP')
+
+map("n", "<leader>rp", run_in_tmux, { noremap = true, silent = true, desc = "Run Python in TMUX" })
 
 -------------------- Resize windows ----------------------------
 map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })

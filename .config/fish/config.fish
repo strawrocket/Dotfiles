@@ -8,7 +8,7 @@ alias vi="nvim" # Use neovim instead of vim
 alias vicode="nvim ~/Documents/Code/cs165/"
 alias vim="nvim"
 alias ls="exa" # Use exa instead of ls
-alias ll="exa -la"
+alias ll="exa -la --icons=always"
 alias la="exa -a"
 alias lc="exa --long --classify"
 alias l="exa -l"

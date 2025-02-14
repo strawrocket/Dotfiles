@@ -1,0 +1,8 @@
+overrides:
+  - files:
+      - "*.md"
+      - "*.markdown"
+    options:
+      proseWrap: "preserve"
+      printWidth: 80
+      singleQuote: true
