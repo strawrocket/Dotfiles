@@ -14,16 +14,16 @@ function M.get()
     return M._keys
   end
   M._keys = {
-    { "<leader>la", vim.lsp.buf.code_action, desc = "Code Action" },
+    { "<leader>ca", vim.lsp.buf.code_action, desc = "Code Action" },
     -- stylua: ignore
-    { "<leader>li", "<cmd>LspInfo<cr>", desc = "Info" },
-    { "<leader>lI", "<cmd>LspInstallInfo<cr>", desc = "Installer Info" },
-    { "<leader>lj", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", desc = "Next Diagnostic" },
-    { "<leader>lk", "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic" },
-    { "<leader>ll", vim.lsp.codelens.run, desc = "Run CodeLens" },
-    { "<leader>lc", vim.lsp.codelens.refresh, desc = "Refresh & Display Codelens", mode = { "n" } },
-    { "<leader>lq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", desc = "Quickfix" },
-    { "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
+    { "<leader>ci", "<cmd>LspInfo<cr>", desc = "Info" },
+    { "<leader>cI", "<cmd>LspInstallInfo<cr>", desc = "Installer Info" },
+    { "<leader>cj", "<cmd>lua vim.lsp.diagnostic.goto_next()<CR>", desc = "Next Diagnostic" },
+    { "<leader>ck", "<cmd>lua vim.lsp.diagnostic.goto_prev()<cr>", desc = "Prev Diagnostic" },
+    { "<leader>cl", vim.lsp.codelens.run, desc = "Run CodeLens" },
+    { "<leader>cc", vim.lsp.codelens.refresh, desc = "Refresh & Display Codelens", mode = { "n" } },
+    { "<leader>cq", "<cmd>lua vim.lsp.diagnostic.set_loclist()<cr>", desc = "Quickfix" },
+    { "<leader>cr", "<cmd>lua vim.lsp.buf.rename()<cr>", desc = "Rename" },
     -- Goto
     { "gd", vim.lsp.buf.definition, desc = "Goto Definition", has = "definition" },
     { "gr", vim.lsp.buf.references, desc = "References", nowait = true },

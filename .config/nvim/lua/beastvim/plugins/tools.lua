@@ -88,22 +88,22 @@ return {
     },
     keys = {
       {
-        "<leader>hnf",
+        "<leader>nf",
         "<cmd>lua require('neogen').generate({ type = 'func' })<CR>",
         desc = "Generate annotation for current function",
       },
       {
-        "<leader>hnc",
+        "<leader>nc",
         "<cmd>lua require('neogen').generate({ type = 'class' })<CR>",
         desc = "Generate annotation for current class",
       },
       {
-        "<leader>hnt",
+        "<leader>nt",
         "<cmd>lua require('neogen').generate({ type = 'type' })<CR>",
         desc = "Generate annotation for current type",
       },
       {
-        "<leader>hnF",
+        "<leader>nF",
         "<cmd>lua require('neogen').generate({ type = 'file' })<CR>",
         desc = "Generate annotation for current file",
       },
@@ -120,6 +120,7 @@ return {
       explorer = { enabled = false },
       indent = { enabled = true },
       input = { enabled = true },
+      zen = {enabled = true},
       notifier = {
         enabled = true,
         timeout = 3000,
@@ -153,13 +154,6 @@ return {
         desc = "Buffers",
       },
       {
-        "<leader>/",
-        function()
-          Snacks.picker.grep()
-        end,
-        desc = "Grep",
-      },
-      {
         "<leader>:",
         function()
           Snacks.picker.command_history()
@@ -173,14 +167,6 @@ return {
         end,
         desc = "Notification History",
       },
-      -- {
-      --   "<leader>e",
-      --   function()
-      --     Snacks.explorer()
-      --   end,
-      --   desc = "File Explorer",
-      -- },
-      -- find
       {
         "<leader>fb",
         function()
@@ -511,13 +497,6 @@ return {
         desc = "Toggle Zen Mode",
       },
       {
-        "<leader>Z",
-        function()
-          Snacks.zen.zoom()
-        end,
-        desc = "Toggle Zoom",
-      },
-      {
         "<leader>.",
         function()
           Snacks.scratch()
@@ -603,24 +582,6 @@ return {
         end,
         desc = "Prev Reference",
         mode = { "n", "t" },
-      },
-      {
-        "<leader>N",
-        desc = "Neovim News",
-        function()
-          Snacks.win({
-            file = vim.api.nvim_get_runtime_file("doc/news.txt", false)[1],
-            width = 0.6,
-            height = 0.6,
-            wo = {
-              spell = false,
-              wrap = false,
-              signcolumn = "yes",
-              statuscolumn = " ",
-              conceallevel = 3,
-            },
-          })
-        end,
       },
     },
     init = function()

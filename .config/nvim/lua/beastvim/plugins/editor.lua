@@ -23,7 +23,7 @@ return {
         spacing = 5, -- spacing between columns
         align = "center", -- align columns left, center or right
       },
-      sort = { "group", "alphanum" },
+      sort = { "order" },
       icons = {
         mappings = true,
         rules = {
@@ -38,7 +38,7 @@ return {
           { pattern = "split.*vertical", icon = "󰤼", color = "gray" },
           { pattern = "split.*horizontal", icon = "󰤻", color = "gray" },
           { pattern = "lsp", icon = "󰒋", color = "cyan" },
-          { pattern = "chatgpt", icon = "󰚩", color = "azure" },
+          { pattern = "ChatGPT", icon = "󰚩", color = "azure" },
           { pattern = "markdown", icon = "", color = "green" },
           { pattern = "diagnostic", icon = "", color = "red" },
           { pattern = "definition", icon = "󰇀", color = "purple" },
@@ -70,14 +70,19 @@ return {
         mode = { "n", "v" },
         { "<leader>g", group = "+Git" },
         { "<leader>s", group = "+Session" },
-        { "<leader>c", group = "+ChatGPT" },
+        { "<leader>a", group = "+AI" },
+        { "<leader>c", group = "+Code" },
         { "<leader>l", group = "+LSP" },
-        { "<leader>h", group = "+Help" },
+        { "<leader>n", group = "+Neogen", icon = { icon = "", color = "cyan" } },
         { "<leader>t", group = "+Toggle" },
         { "<leader>m", group = "+Markdown" },
+        { "<leader>d", group = "+Debug" },
+        { "<leader>u", group = "UI", icon = { icon = "󰙵 ", color = "cyan" } },
+        { "<leader>x", group = "+diagnostics/quickfix", icon = { icon = "󱖫 ", color = "green" } },
+        { "<leader><tab>", group = "+Tab", icon = { icon = "󰓩 ", color = "green" } },
         -- { "<leader>n", group = "+Neogen" },
         { "<leader>gc", group = "+Git checkout" },
-        { "<leader>hn", group = "+Neogen" },
+        -- { "<leader>hn", group = "+Neogen" },
         { "f", group = "+Fold" },
         { "g", group = "+Goto" },
         { "s", group = "+Search" },
@@ -418,5 +423,145 @@ return {
       { "=p", "<Plug>(YankyPutAfterFilter)", desc = "Put After Applying a Filter" },
       { "=P", "<Plug>(YankyPutBeforeFilter)", desc = "Put Before Applying a Filter" },
     },
+  },
+  {
+    "folke/flash.nvim",
+    event = "VeryLazy",
+    ---@type Flash.Config
+    opts = {},
+  -- stylua: ignore
+  keys = {
+    { "s", mode = { "n", "x", "o" }, function() require("flash").jump() end, desc = "Flash" },
+    { "S", mode = { "n", "x", "o" }, function() require("flash").treesitter() end, desc = "Flash Treesitter" },
+    { "r", mode = "o", function() require("flash").remote() end, desc = "Remote Flash" },
+    { "R", mode = { "o", "x" }, function() require("flash").treesitter_search() end, desc = "Treesitter Search" },
+    { "<c-s>", mode = { "c" }, function() require("flash").toggle() end, desc = "Toggle Flash Search" },
+  },
+  },
+  {
+    "ThePrimeagen/refactoring.nvim",
+    event = { "BufReadPre", "BufNewFile" },
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+    },
+    keys = {
+      { "<leader>r", "", desc = "+refactor", mode = { "n", "v" } },
+      {
+        "<leader>rs",
+        pick,
+        mode = "v",
+        desc = "Refactor",
+      },
+      {
+        "<leader>ri",
+        function()
+          require("refactoring").refactor("Inline Variable")
+        end,
+        mode = { "n", "v" },
+        desc = "Inline Variable",
+      },
+      {
+        "<leader>rb",
+        function()
+          require("refactoring").refactor("Extract Block")
+        end,
+        desc = "Extract Block",
+      },
+      {
+        "<leader>rf",
+        function()
+          require("refactoring").refactor("Extract Block To File")
+        end,
+        desc = "Extract Block To File",
+      },
+      {
+        "<leader>rP",
+        function()
+          require("refactoring").debug.printf({ below = false })
+        end,
+        desc = "Debug Print",
+      },
+      {
+        "<leader>rp",
+        function()
+          require("refactoring").debug.print_var({ normal = true })
+        end,
+        desc = "Debug Print Variable",
+      },
+      {
+        "<leader>rc",
+        function()
+          require("refactoring").debug.cleanup({})
+        end,
+        desc = "Debug Cleanup",
+      },
+      {
+        "<leader>rf",
+        function()
+          require("refactoring").refactor("Extract Function")
+        end,
+        mode = "v",
+        desc = "Extract Function",
+      },
+      {
+        "<leader>rF",
+        function()
+          require("refactoring").refactor("Extract Function To File")
+        end,
+        mode = "v",
+        desc = "Extract Function To File",
+      },
+      {
+        "<leader>rx",
+        function()
+          require("refactoring").refactor("Extract Variable")
+        end,
+        mode = "v",
+        desc = "Extract Variable",
+      },
+      {
+        "<leader>rp",
+        function()
+          require("refactoring").debug.print_var()
+        end,
+        mode = "v",
+        desc = "Debug Print Variable",
+      },
+    },
+    opts = {
+      prompt_func_return_type = {
+        go = false,
+        python = true,
+        java = false,
+        cpp = false,
+        c = false,
+        h = false,
+        hpp = false,
+        cxx = false,
+      },
+      prompt_func_param_type = {
+        go = false,
+        python = true,
+        java = false,
+        cpp = false,
+        c = false,
+        h = false,
+        hpp = false,
+        cxx = false,
+      },
+      printf_statements = {},
+      print_var_statements = {},
+      show_success_message = true, -- shows a message with information about the refactor on success
+      -- i.e. [Refactor] Inlined 3 variable occurrences
+    },
+    config = function(_, opts)
+      require("refactoring").setup(opts)
+      if Utils.has_feature("telescope.nvim") then
+        LazyVim.on_load("telescope.nvim", function()
+          require("telescope").load_extension("refactoring")
+        end)
+      end
+    end,
   },
 }

@@ -1,29 +1,80 @@
 local map = Utils.safe_keymap_set
+local telescope = require("telescope.builtin")
 
--- Define the function to run the current file in a tmux pane using Python
-local function run_in_tmux()
-  -- Get the full path and directory of the current file
-  local file_path = vim.fn.expand("%:p")
-  local file_dir = vim.fn.expand("%:p:h")
-  local command = "python " .. file_path
+local function sleep(n)
+  os.execute("sleep " .. tonumber(n))
+end
 
-  -- Check if this command is running within a tmux session
-  if os.getenv("TMUX") ~= nil then
-    -- Check if there's only one pane currently
-    local panes = io.popen("tmux list-panes -F '#{pane_active}' | wc -l"):read("*n")
-
-    -- Open in same directory: Create a new vertical split pane with `-c` to set the initial directory
-    if panes == 1 then
-      os.execute("tmux split-window -v -c " .. vim.fn.shellescape(file_dir))
-    end
-
-    -- Select the pane below
-    os.execute("tmux select-pane -D")
-    -- Send the Python command to run in the selected pane
-    os.execute("tmux send-keys '" .. command .. "' Enter")
-  else
-    print("Not inside a tmux session")
+-- Function to run the selected file in a tmux pane
+local function run_in_tmux(file_path)
+  if not file_path or file_path == "" then
+    print("No file selected")
+    return
   end
+
+  local file_dir = vim.fn.fnamemodify(file_path, ":h") -- Extract the file's directory
+  local command = "python " .. vim.fn.shellescape(file_path) -- Python execution command
+
+  -- Check if running inside a tmux session
+  local tmux_pane = os.getenv("TMUX")
+  if not tmux_pane then
+    print("Not inside a TMUX session")
+    return
+  end
+
+  -- Get the original Neovim pane ID
+  local handle = io.popen("tmux display-message -p '#{pane_id}'")
+  local original_pane = handle and handle:read("*l") or nil
+  if handle then
+    handle:close()
+  end
+
+  -- Get the number of panes in the current tmux window
+  local pane_count_handle = io.popen("tmux list-panes | wc -l")
+  local pane_count = pane_count_handle and pane_count_handle:read("*n") or 1
+  if pane_count_handle then
+    pane_count_handle:close()
+  end
+
+  -- If only one pane exists, create a new one in the same directory
+  if pane_count == 1 then
+    os.execute(string.format("tmux split-window -v -c %s", vim.fn.shellescape(file_dir)))
+    sleep(0.5) -- Short delay for tmux pane to open
+  end
+
+  -- Ensure there's another pane before switching
+  if pane_count > 1 then
+    os.execute("tmux select-pane -D") -- Move to the bottom pane
+  end
+
+  -- Send the Python command to the Tmux pane
+  os.execute(string.format("tmux send-keys %s Enter", vim.fn.shellescape(command)))
+
+  -- Return focus back to Neovim after sending the command
+  if original_pane then
+    sleep(0.1) -- Short delay before switching back
+    os.execute(string.format("tmux select-pane -t %s", vim.fn.shellescape(original_pane)))
+  end
+end
+
+-- Function that opens Telescope and runs the selected file in tmux
+local function run_file_from_telescope()
+  telescope.find_files({
+    prompt_title = "Select a file to run in Tmux",
+    cwd = vim.fn.expand("%:p:h"), -- Open in current file's directory
+    attach_mappings = function(_, map)
+      map("i", "<CR>", function(prompt_bufnr)
+        local selection = require("telescope.actions.state").get_selected_entry()
+        require("telescope.actions").close(prompt_bufnr)
+        if selection and selection.path then
+          run_in_tmux(selection.path)
+        else
+          print("No file selected")
+        end
+      end)
+      return true
+    end,
+  })
 end
 
 -------------------- General Mappings --------------------------
@@ -37,6 +88,16 @@ map("n", "<C-h>", "<C-w>h", { desc = "Go to left window", remap = true })
 map("n", "<C-j>", "<C-w>j", { desc = "Go to lower window", remap = true })
 map("n", "<C-k>", "<C-w>k", { desc = "Go to upper window", remap = true })
 map("n", "<C-l>", "<C-w>l", { desc = "Go to right window", remap = true })
+
+-------------------- Better tab navigation ------------------
+-- Taken from lazyvim
+map("n", "<leader><tab>l", "<cmd>tablast<cr>", { desc = "Last Tab" })
+map("n", "<leader><tab>o", "<cmd>tabonly<cr>", { desc = "Close Other Tabs" })
+map("n", "<leader><tab>f", "<cmd>tabfirst<cr>", { desc = "First Tab" })
+map("n", "<leader><tab><tab>", "<cmd>tabnew<cr>", { desc = "New Tab" })
+map("n", "<leader><tab>]", "<cmd>tabnext<cr>", { desc = "Next Tab" })
+map("n", "<leader><tab>d", "<cmd>tabclose<cr>", { desc = "Close Tab" })
+map("n", "<leader><tab>[", "<cmd>tabprevious<cr>", { desc = "Previous Tab" })
 
 -------------------- Better tab navigation ------------------
 map("n", "<Tab>", ":tabnext<cr>", { desc = "Tab-Left" })
@@ -53,7 +114,8 @@ map("v", "<", "<gv", { desc = "Indent left" })
 map("v", ">", ">gv", { desc = "Indent right" })
 map("v", "p", '"_dP')
 
-map("n", "<leader>rp", run_in_tmux, { noremap = true, silent = true, desc = "Run Python in TMUX" })
+map("n", "<leader>rr", run_in_tmux, { noremap = true, silent = true, desc = "Run Python in TMUX" })
+map("n", "<leader>rR", run_file_from_telescope, { noremap = true, silent = true, desc = "Run Python in TMUX" })
 
 -------------------- Resize windows ----------------------------
 map("n", "<C-Up>", "<cmd>resize +2<cr>", { desc = "Increase window height" })

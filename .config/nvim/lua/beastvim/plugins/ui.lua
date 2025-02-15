@@ -169,11 +169,9 @@ return {
         theme = "doom",
         hide = {
           statusline = 0,
-          tabline = 0,
-          winbar = 0,
         },
         config = {
-          header = Logos(),
+          header = Logos.get("week_day"),
           center = {
             {
               action = "lua Utils.pick('oldfiles')()",
