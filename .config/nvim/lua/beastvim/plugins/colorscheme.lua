@@ -4,7 +4,13 @@ return {
     lazy = true,
     opts = { style = "night" },
   },
-
+  { "ellisonleao/gruvbox.nvim", priority = 1000, config = true, opts = ... },
+  { "sainnhe/gruvbox-material", priority = 1000, config = true, opts = ... },
+  {
+    "scottmckendry/cyberdream.nvim",
+    lazy = false,
+    priority = 1000,
+  },
   {
     "catppuccin/nvim",
     lazy = true,

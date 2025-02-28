@@ -22,6 +22,20 @@ return {
     },
   },
   {
+    "zbirenbaum/copilot.lua",
+    cmd = "Copilot",
+    event = { "InsertEnter" },
+    build = ":Copilot auth",
+    dependencies = { "zbirenbaum/copilot-cmp" },
+    opts = {
+      suggestion = { enabled = true },
+      panel = { enabled = true },
+      filetypes = {
+        ["*"] = true, -- disable for all other filetypes and ignore default `filetypes`
+      },
+    },
+  },
+  {
     "zbirenbaum/copilot-cmp",
     event = { "InsertEnter" },
     dependencies = { "copilot.lua" },
@@ -46,7 +60,7 @@ return {
     opts = {
       enable_cmp_source = vim.g.ai_cmp,
       virtual_text = {
-        enabled =  vim.g.ai_cmp,
+        enabled = vim.g.ai_cmp,
         key_bindings = {
           accept = true, -- handled by nvim-cmp / blink.cmp
           next = "<M-]>",

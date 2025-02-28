@@ -1,13 +1,13 @@
-vim.g.mapleader = " "
+vim.g.mapleader = ","
 vim.g.maplocalleader = " "
-
+vim.g.ai_cmp = false
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 local opt = vim.opt
 
 opt.backup = false -- creates a backup file
-opt.clipboard = "unnamedplus" -- allows neovim to access the system clipboard
+opt.clipboard = vim.env.SSH_TTY and "" or "unnamedplus" -- allows neovim to access the system clipboard
 opt.cmdheight = 0 -- more space in the neovim command line for displaying messages
 opt.confirm = true -- Confirm to save changes before exiting modified buffer
 opt.completeopt = { "menu", "menuone", "noselect" } -- mostly just for cmp
@@ -27,7 +27,7 @@ opt.showtabline = 2 -- always show tabs
 opt.smartindent = true -- make indenting smarter again
 opt.splitbelow = true -- force all horizontal splits to go below current window
 opt.splitright = true -- force all vertical splits to go to the right of current window
-opt.swapfile = false -- creates a swapfile
+opt.swapfile = true -- creates a swapfile
 opt.termguicolors = true -- set term gui colors (most terminals support this)
 opt.timeoutlen = 100 -- time to wait for a mapped sequence to complete (in milliseconds)
 -- opt.undofile = true                         -- enable persistent undo
@@ -49,16 +49,17 @@ opt.smoothscroll = true
 opt.laststatus = 3
 opt.list = true -- Show some invisible characters (tabs...
 opt.guicursor = "n-v-c-sm:block,i-ci-ve:ver25,r-cr-o:hor20"
+opt.colorcolumn = "80"
 -- opt.guicursor = "a:xxx"
 opt.background = "dark"
 opt.selection = "exclusive"
 opt.virtualedit = "onemore"
-opt.showcmd = false
+opt.showcmd = true
 opt.title = true
 opt.titlestring = "%<%F%=%l/%L - nvim"
 opt.mousemoveevent = true
 opt.syntax = "off"
-opt.spelllang = { "en", "vi" }
+opt.spelllang = { "en" }
 -- use fold
 opt.foldlevelstart = 99
 opt.foldlevel = 99

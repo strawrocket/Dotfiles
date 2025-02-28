@@ -114,7 +114,9 @@ map("v", "<", "<gv", { desc = "Indent left" })
 map("v", ">", ">gv", { desc = "Indent right" })
 map("v", "p", '"_dP')
 
-map("n", "<leader>rr", run_in_tmux, { noremap = true, silent = true, desc = "Run Python in TMUX" })
+map("n", "<leader>rr", function()
+  run_in_tmux(vim.fn.expand("%:p"))
+end, { noremap = true, silent = true, desc = "Run Python in TMUX" })
 map("n", "<leader>rR", run_file_from_telescope, { noremap = true, silent = true, desc = "Run Python in TMUX" })
 
 -------------------- Resize windows ----------------------------
